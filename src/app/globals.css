@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #137fec;
+  --color-primary-soft: rgba(19, 127, 236, 0.1);
+  --color-primary-ring: rgba(19, 127, 236, 0.2);
+  --color-canvas: #f6f7f8;
+  --color-canvas-dark: #101922;
+  --color-surface: #ffffff;
+  --color-foreground: #0d141b;
+  --color-muted: #4c739a;
+  --color-border: #e7edf3;
+  --color-success: #10b981;
+  --color-danger: #ef4444;
+
+  --font-display: "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.25rem;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-display);
+    color: var(--color-foreground);
+    background: var(--color-canvas);
+  }
+
+  body {
+    font-family: var(--font-display);
+    min-height: 100vh;
+  }
+
+  *,
+  *::before,
+  *::after {
+    border-color: var(--color-border);
+  }
+
+  .material-symbols-outlined {
+    font-family: "Material Symbols Outlined";
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    font-feature-settings: "liga";
+    -webkit-font-feature-settings: "liga";
+    -webkit-font-smoothing: antialiased;
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+  }
+
+  .material-symbols-filled {
+    font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 24;
+  }
+}
+
+.maplibregl-popup-content {
+  padding: 0 !important;
+  border-radius: var(--radius-lg) !important;
+  box-shadow: 0 10px 30px -10px rgba(13, 20, 27, 0.25) !important;
+  border: 1px solid var(--color-border) !important;
+}
+
+.maplibregl-popup-close-button {
+  font-size: 18px;
+  padding: 6px 8px;
+  color: var(--color-muted);
+}
+
+.maplibregl-ctrl-attrib a {
+  color: var(--color-muted);
+}
