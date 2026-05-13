@@ -152,3 +152,4 @@ No auth, no DB, no saved trips, no bookings. No place ratings/photos (OSM doesn'
 - Routing: © OpenRouteService — <https://openrouteservice.org/>
 - POI data: © OpenStreetMap via Overpass API — <https://overpass-api.de/>
 - Hero photo: Unsplash
+# mongoliaRoadTrip
