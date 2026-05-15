@@ -1,6 +1,6 @@
 # Mongolia Road Trip Planner
 
-A → B route explorer for Mongolia. Type two place names (or hit **Use my location**), get a driving route plus POIs (fuel, cafe, restaurant, hotel, camp, scenic, attraction) sampled every 15 km along the corridor — rendered on a MapLibre map, a start ⇆ destination connector, category cards, and an AI trip overview.
+A → B route explorer for Mongolia. Type two place names (or hit **Use my location**), get a driving route plus POIs (fuel, cafe, restaurant, hotel, camp, scenic, lakes, viewpoints, attractions, natural landmarks, parks) sampled along the corridor — rendered on a MapLibre map, a start ⇆ destination connector, notable-place cards, category cards, and an AI trip overview.
 
 POC built on free APIs only: **Nominatim** (geocoding + reverse geocoding), **OpenRouteService** (driving directions), **Overpass** (OSM POIs), **Gemini 2.0 Flash** (optional AI overview).
 
@@ -74,6 +74,7 @@ src/
 │   │   │                          - SiteHeader, HeroSearch, RouteSearchForm, FilterBar
 │   │   │                          - MapView (flies-to-place on click/random pick)
 │   │   │                          - RouteHeader (start ──── destination connector pill)
+│   │   │                          - FeaturedPlaces (top scored places with image/rating/description)
 │   │   │                          - CategoryGrid + CategoryCard (one card per category,
 │   │   │                            click → random place → map flyTo)
 │   │   │                          - TripSummary (Gemini AI overview)
@@ -144,7 +145,7 @@ The `/api/places` handler is configured with `maxDuration = 60` (seconds). On Ve
 
 ## 8. Out of scope (deliberate)
 
-No auth, no DB, no saved trips, no bookings. No place ratings/photos (OSM doesn't have them). No multi-stop routing, no alternative routes, no traffic, no streaming. UI in English. Admin and checkout screens from the source design are intentionally not built.
+No auth, no DB, no saved trips, no bookings. Ratings are route-aware prominence scores derived from OSM metadata rather than review-platform ratings. No multi-stop routing, no alternative routes, no traffic, no streaming. UI in English. Admin and checkout screens from the source design are intentionally not built.
 
 ## 9. Attribution
 

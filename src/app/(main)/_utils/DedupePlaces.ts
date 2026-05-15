@@ -10,13 +10,18 @@ const sameNameNear = (a: Place, b: Place): boolean =>
 export const dedupePlaces = (places: Place[]): Place[] => {
   const byId = new Map<string, Place>();
   for (const p of places) {
-    if (!byId.has(p.id)) byId.set(p.id, p);
+    const existing = byId.get(p.id);
+    if (!existing || p.popularityScore > existing.popularityScore) byId.set(p.id, p);
   }
   const unique = Array.from(byId.values());
   const kept: Place[] = [];
   for (const candidate of unique) {
-    const collision = kept.find((k) => sameNameNear(k, candidate));
-    if (!collision) kept.push(candidate);
+    const collisionIndex = kept.findIndex((k) => sameNameNear(k, candidate));
+    if (collisionIndex === -1) {
+      kept.push(candidate);
+    } else if (candidate.popularityScore > kept[collisionIndex].popularityScore) {
+      kept[collisionIndex] = candidate;
+    }
   }
   return kept;
 };

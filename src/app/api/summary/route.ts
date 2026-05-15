@@ -12,6 +12,11 @@ const placeSchema = z.object({
   name: z.string(),
   category: z.enum(PLACE_CATEGORIES),
   coord: coordSchema,
+  location: z.string(),
+  imageUrl: z.string(),
+  rating: z.number(),
+  description: z.string(),
+  popularityScore: z.number(),
   distanceFromStartKm: z.number(),
   distanceFromRoadMeters: z.number(),
 });

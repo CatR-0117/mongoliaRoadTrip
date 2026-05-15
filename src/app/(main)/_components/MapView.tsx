@@ -91,6 +91,11 @@ export const MapView = ({ route, places, visibleCategories, focused, onPlaceClic
   const mapRef = useRef<Map | null>(null);
   const markersRef = useRef<maplibregl.Marker[]>([]);
   const readyRef = useRef(false);
+  const latestPropsRef = useRef({ route, places, visibleCategories, onPlaceClick });
+
+  useEffect(() => {
+    latestPropsRef.current = { route, places, visibleCategories, onPlaceClick };
+  }, [route, places, visibleCategories, onPlaceClick]);
 
   useEffect(() => {
     if (!containerRef.current || mapRef.current) return;
@@ -104,7 +109,10 @@ export const MapView = ({ route, places, visibleCategories, focused, onPlaceClic
     map.addControl(new maplibregl.NavigationControl({ showCompass: false }), "top-right");
     map.on("load", () => {
       readyRef.current = true;
-      upsertRouteLayer(map, null);
+      const current = latestPropsRef.current;
+      upsertRouteLayer(map, current.route);
+      if (current.route) fitToRoute(map, current.route);
+      rebuildMarkers(map, markersRef, current.places, current.visibleCategories, current.onPlaceClick);
     });
     mapRef.current = map;
     return () => {

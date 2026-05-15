@@ -62,7 +62,7 @@ export const RouteHeader = ({ route, placeCount }: RouteHeaderProps) => (
       </span>
       <span className="flex items-center gap-1">
         <Icon name="explore" className="text-primary text-base" />
-        Sampled every 15 km, 5 km corridor
+        5 km stop corridor, wider scenic scan
       </span>
     </div>
   </section>

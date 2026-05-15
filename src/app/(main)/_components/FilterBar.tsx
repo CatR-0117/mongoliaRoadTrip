@@ -14,7 +14,7 @@ type FilterBarProps = {
 };
 
 const CHIP_BASE =
-  "flex h-10 shrink-0 cursor-pointer items-center justify-center gap-x-2 rounded-full px-5 font-semibold text-sm transition-colors shadow-sm select-none";
+  "flex h-10 shrink-0 cursor-pointer items-center justify-center gap-x-2 rounded-full px-4 sm:px-5 font-semibold text-sm transition-colors shadow-sm select-none";
 
 export const FilterBar = ({
   isSelected,
@@ -24,7 +24,7 @@ export const FilterBar = ({
   totalPlaces,
 }: FilterBarProps) => (
   <div className="w-full sticky top-[64px] z-30 bg-canvas/95 backdrop-blur-sm border-b border-border">
-    <div className="w-full max-w-[1200px] mx-auto px-4 md:px-10 py-3 flex gap-3 flex-wrap items-center">
+    <div className="w-full max-w-[1200px] mx-auto px-4 md:px-10 py-3 flex gap-2 sm:gap-3 overflow-x-auto md:overflow-visible md:flex-wrap items-center">
       <button
         type="button"
         onClick={() => onSetAll(!allSelected)}
@@ -61,7 +61,7 @@ export const FilterBar = ({
           </button>
         );
       })}
-      <div className="ml-auto text-xs font-semibold text-muted">
+      <div className="shrink-0 md:ml-auto text-xs font-semibold text-muted">
         {totalPlaces > 0 ? `${totalPlaces} places along route` : null}
       </div>
     </div>

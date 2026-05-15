@@ -4,6 +4,7 @@ import dynamic from "next/dynamic";
 import { useState } from "react";
 import { CategoryGrid } from "@/app/(main)/_components/CategoryGrid";
 import { EmptyState } from "@/app/(main)/_components/EmptyState";
+import { FeaturedPlaces } from "@/app/(main)/_components/FeaturedPlaces";
 import { PlaceCard } from "@/app/(main)/_components/PlaceCard";
 import { RouteHeader } from "@/app/(main)/_components/RouteHeader";
 import { SkeletonMap } from "@/app/(main)/_components/SkeletonMap";
@@ -35,7 +36,7 @@ const renderPlacesBody = (
     return (
       <EmptyState
         title="Loading places along your route"
-        description="Sampling the polyline every 15 km and querying OpenStreetMap for nearby stops."
+        description="Checking OpenStreetMap corridor batches. The first load is cached for repeat searches."
         icon="progress_activity"
       />
     );
@@ -48,9 +49,11 @@ const renderPlacesBody = (
       />
     );
   }
+  const visiblePlaces = places.filter((p) => visible.has(p.category));
   return (
     <div className="space-y-6">
       <TripSummary route={route} places={places} />
+      <FeaturedPlaces places={visiblePlaces} onPick={onPick} />
       <CategoryGrid places={places} visibleCategories={visible} onRandomPick={onPick} />
     </div>
   );
